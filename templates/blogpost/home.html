@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+    {% for post in posts %}
+    {% comment %} <article class="media content-section">
+        <div class="media-body">
+          <div class="article-metadata">
+
+            <a class="mr-2" href="#">{{ post.title }}</a>
+            <a class="mr-2" href="#">{{ post.image }}</a>
+            <a class="mr-2" href="#">{{ post.author }}</a>
+            <small class="text-muted">{{ post.date_posted | date:"F d, Y" }}</small>
+          </div>
+          <h2><a class="article-title" href="{% url 'detail' post.id %}">{{ post.title }}</a></h2>
+          <p class="article-content">{{ post.content }}</p>
+        </div>
+      </article> {% endcomment %}
+
+
+
+      <div class="card mb-4">
+        <a href="#!"><img class="card-img-top" src="{{ post.image }}" alt="..." /></a>
+        <div class="card-body">
+            <div class="small text-muted">{{ post.date_created | date:"F d, Y" }}</div>
+            <h2 class="card-title h4">{{ post.title }}</h2>
+            <p class="card-text">{{ post.description }}</p>
+            <a class="btn btn-primary" href="#!">Read more →</a>
+        </div>
+    </div>
+    {% endfor %}
+{% endblock content %}
